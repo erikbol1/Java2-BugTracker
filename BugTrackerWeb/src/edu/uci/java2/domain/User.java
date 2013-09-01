@@ -2,7 +2,7 @@ package edu.uci.java2.domain;
 
 public class User {
 
-	private int ID;
+	private int ID = -1;
 	private String username;
 	private String email;
 	private String passwordHash;
