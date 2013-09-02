@@ -8,6 +8,9 @@
   <property name="connection.url">jdbc:mysql://localhost:3306/bugtracker</property>  
   <property name="connection.username">bugtracker</property>  
   <property name="connection.password">bugtracker</property>  
-  <mapping class="edu.uci.java2.domain.User" resource="user.hbm.xml"/>
+  <mapping class="edu.uci.java2.domain.User" resource="User.hbm.xml"/>
+  <mapping class="edu.uci.java2.domain.Bug" resource="Bug.hbm.xml"/>
+  <mapping class="edu.uci.java2.domain.Priority" resource="Priority.hbm.xml"/>
+  <mapping class="edu.uci.java2.domain.Status" resource="Status.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

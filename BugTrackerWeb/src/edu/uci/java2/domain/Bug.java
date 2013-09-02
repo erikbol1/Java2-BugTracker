@@ -5,11 +5,11 @@ import java.util.Date;
 public class Bug {
 	
 	private int ID;
-	private String summarry;
+	private String summary;
 	private String description;
-	private int priority;
-	private int status;
-	private Date createdData;
+	private Priority priority;
+	private Status status;
+	private Date createdDate;
 	private Date lastUpdateDate;
 	private User assignee;
 	
@@ -23,20 +23,20 @@ public class Bug {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPriority() {
+	public Priority getPriority() {
 		return priority;
 	}
-	public void setPriority(int priority) {
+	public void setPriority(Priority priority) {
 		this.priority = priority;
 	}
-	public int getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public Date getCreatedData() {
-		return createdData;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 	public Date getLastUpdateDate() {
 		return lastUpdateDate;
@@ -47,11 +47,11 @@ public class Bug {
 	public void setAssignee(User assignee) {
 		this.assignee = assignee;
 	}
-	public String getSummarry() {
-		return summarry;
+	public String getSummary() {
+		return summary;
 	}
-	public void setSummarry(String summarry) {
-		this.summarry = summarry;
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 }

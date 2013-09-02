@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 2, 2013 11:00:51 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="edu.uci.java2.domain.Bug" table="BUG">
+  <id access="field" name="ID" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="summary" type="java.lang.String">
+   <column name="SUMMARY"/>
+  </property>
+  <property generated="never" lazy="false" name="description" type="java.lang.String">
+   <column name="DESCRIPTION"/>
+  </property>
+  <many-to-one class="edu.uci.java2.domain.Priority" fetch="join" name="priority">
+   <column name="PRIORITY"/>
+  </many-to-one>
+  <many-to-one class="edu.uci.java2.domain.Status" fetch="join" name="status">
+   <column name="STATUS"/>
+  </many-to-one>
+  <property access="field" generated="insert" lazy="false"
+   name="createdDate" type="java.util.Date">
+   <column name="CREATEDDATE"/>
+  </property>
+  <property access="field" generated="always" lazy="false"
+   name="lastUpdateDate" type="java.util.Date">
+   <column name="LASTUPDATEDATE"/>
+  </property>
+  <many-to-one class="edu.uci.java2.domain.User" fetch="join" name="assignee">
+   <column name="ASSIGNEE"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

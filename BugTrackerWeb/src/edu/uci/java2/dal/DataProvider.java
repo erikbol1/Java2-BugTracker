@@ -26,6 +26,7 @@ public class DataProvider<T> {
 	private static InitialContext context;
 	private final Class<T> type;
 	
+	//Added class to constructor to avoid expensive reflection
 	DataProvider(Class<T> type){
 		this.type = type;
 	}
@@ -79,6 +80,15 @@ public class DataProvider<T> {
 			throw new DalException("More then one entry wiht: " + attribute + " equal " +value);
 		}
 		return list.get(0);
+	}
+	
+	List<T> getAll() throws ClassNotFoundException{
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		List<T> list = session.createCriteria(type).list();
+		session.flush();
+		return list;
+		
 	}
 	
 	private synchronized static void initInitialContext() throws NamingException{

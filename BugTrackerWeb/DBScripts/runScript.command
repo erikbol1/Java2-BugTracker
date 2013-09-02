@@ -1,0 +1,1 @@
+/usr/local/mysql-5.6.13-osx10.7-x86_64/bin/mysql  --user=root --password='' mysql  < /Users/dom/Java2-BugTracker/BugTrackerWeb/DBScripts/Script.sql
