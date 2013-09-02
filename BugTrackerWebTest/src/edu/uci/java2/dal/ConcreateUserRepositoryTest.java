@@ -58,9 +58,9 @@ public class ConcreateUserRepositoryTest {
 		user.setPasswordHash("TEST");
 		user.setUsername("testSaveUser_1");
 
-		fixture.SaveUser(user);
+		User newUser = fixture.SaveUser(user);
 
-		// add additional test code here
+		assertNotNull(newUser);
 	}
 
 	/**
@@ -145,32 +145,32 @@ public class ConcreateUserRepositoryTest {
 		// Code copied from https://blogs.oracle.com/randystuph/entry/injecting_jndi_datasources_for_junit
 		// Code has been modified to fit environment
 		// rcarver - setup the jndi context and the datasource
-        try {
-            // Create initial context
-            System.setProperty(Context.INITIAL_CONTEXT_FACTORY,
-                "org.apache.naming.java.javaURLContextFactory");
-            System.setProperty(Context.URL_PKG_PREFIXES, 
-                "org.apache.naming");            
-            InitialContext ic = new InitialContext();
-
-            ic.createSubcontext("java:");
-            ic.createSubcontext("java:comp");
-            ic.createSubcontext("java:comp/env");
-            ic.createSubcontext("java:comp/env/jdbc");
-           
-            // Construct DataSource
-            MysqlConnectionPoolDataSource ds = new MysqlConnectionPoolDataSource();
-            ds.setURL("jdbc:mysql://localhost:3306/bugtracker");
-            ds.setPort(3306);
-            ds.setServerName("localhost");
-            ds.setDatabaseName("bugtracker");
-            ds.setUser("bugtracker");
-            ds.setPassword("bugtracker");
-            
-            ic.bind("java:comp/env/jdbc/bugtracker", ds);
-        } catch (NamingException ex) {
-            Logger.getLogger(ConcreateUserRepositoryTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            // Create initial context
+//            System.setProperty(Context.INITIAL_CONTEXT_FACTORY,
+//                "org.apache.naming.java.javaURLContextFactory");
+//            System.setProperty(Context.URL_PKG_PREFIXES, 
+//                "org.apache.naming");            
+//            InitialContext ic = new InitialContext();
+//
+//            ic.createSubcontext("java:");
+//            ic.createSubcontext("java:comp");
+//            ic.createSubcontext("java:comp/env");
+//            ic.createSubcontext("java:comp/env/jdbc");
+//           
+//            // Construct DataSource
+//            MysqlConnectionPoolDataSource ds = new MysqlConnectionPoolDataSource();
+//            ds.setURL("jdbc:mysql://localhost:3306/bugtracker");
+//            ds.setPort(3306);
+//            ds.setServerName("localhost");
+//            ds.setDatabaseName("bugtracker");
+//            ds.setUser("bugtracker");
+//            ds.setPassword("bugtracker");
+//            
+//            ic.bind("java:comp/env/jdbc/bugtracker", ds);
+//        } catch (NamingException ex) {
+//            Logger.getLogger(ConcreateUserRepositoryTest.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         //END COPIED CODE
         
 	}

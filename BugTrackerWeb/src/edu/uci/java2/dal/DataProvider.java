@@ -1,66 +1,87 @@
 package edu.uci.java2.dal;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
-public class DataProvider {
+
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+
+
+import edu.uci.java2.utils.HibernateUtil;
+
+public class DataProvider<T> {
 	
 	
 	//caching instances for performance
 	private static InitialContext context;
-	private static DataSource datasource;
+	private final Class<T> type;
 	
+	DataProvider(Class<T> type){
+		this.type = type;
+	}
 	
-	Mapper runSQL(String sqlStatement, Mapper mapper) throws NamingException, SQLException{
-		ResultSet result = null;
-		
+	T save(T object) throws NamingException, SQLException, DalException, ClassNotFoundException{
 		
 		if(context ==null){
 			initInitialContext();
 		}
-		if(datasource==null){
-			initDataSource();
-		}
-		
-		Connection connection = null;
-		Statement statement = null;
-		try {
-			connection = datasource.getConnection();
-			statement = connection.createStatement();
-			statement.execute(sqlStatement);
-			result = statement.getResultSet();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(mapper!=null){
-			mapper.setResult(result);
-		}
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Transaction transaction=null;
+		Session session = null;
 		try{
-			result.close();
-			statement.close();
-			connection.close();
+			session = sessionFactory.openSession();
+			
+			transaction = session.beginTransaction();
+			
+			session.saveOrUpdate(object);
+			
+			transaction.commit();
 		}catch(Exception e){
-			//Nothing can be done
+			if(transaction!=null){
+				transaction.rollback();
+			}
+			throw new DalException(e);
 		}finally{
-			result = null;
-			statement = null;
-			connection = null;
+			if(session!=null){
+				session.flush();
+			}
 		}
-		return mapper;
+		return object;
+	}
+	
+	T get(int ID) throws NamingException, ClassNotFoundException{
+		if(context ==null){
+			initInitialContext();
+		}
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		return (T) session.get(type, ID);
+	}
+	
+	T get(String attribute, String value) throws DalException, ClassNotFoundException{
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		List<T> list = session.createCriteria(type).add(Restrictions.eq(attribute, value)).list();
+		if(list.size()==0){
+			throw new DalException("No reuslt to Return");
+		}else if(list.size()>1){
+			throw new DalException("More then one entry wiht: " + attribute + " equal " +value);
+		}
+		return list.get(0);
 	}
 	
 	private synchronized static void initInitialContext() throws NamingException{
 		context = new InitialContext();
 	}
-	private synchronized static void initDataSource() throws NamingException{
-		datasource = (DataSource)context.lookup("java:comp/env/jdbc/bugtracker");
-	}
-
 }

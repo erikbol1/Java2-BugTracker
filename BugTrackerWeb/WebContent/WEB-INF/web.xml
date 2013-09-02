@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
-<!DOCTYPE web-app
-PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-"http://java.sun.com/dtd/web-app_2_3.dtd">
-
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
  <description>BugTracker</description>
-  <resource-ref>
-      <description>DB Connection</description>
-      <res-ref-name>jdbc/bugtracker</res-ref-name>
-      <res-type>javax.sql.DataSource</res-type>
-      <res-auth>Container</res-auth>
-  </resource-ref>
+ <listener>
+  <listener-class>edu.uci.java2.contoller.HibernateListener</listener-class>
+ </listener>
+ <!-- resource-ref>
+  <description>DB Connection</description>
+  <res-ref-name>jdbc/bugtracker</res-ref-name>
+  <res-type>javax.sql.DataSource</res-type>
+  <res-auth>Container</res-auth>
+ </resource-ref-->
 </web-app>

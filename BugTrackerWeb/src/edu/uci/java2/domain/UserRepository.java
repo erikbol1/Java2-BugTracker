@@ -8,7 +8,7 @@ public interface UserRepository {
 	
 	public User getUSerByUserID(int ID) throws DalException;
 	
-	public void SaveUser(User user) throws DalException;
+	public User SaveUser(User user) throws DalException;
 	
 	
 
