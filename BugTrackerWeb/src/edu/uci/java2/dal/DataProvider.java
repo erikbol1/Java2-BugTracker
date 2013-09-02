@@ -19,7 +19,11 @@ import org.hibernate.criterion.Restrictions;
 
 import edu.uci.java2.utils.HibernateUtil;
 
-public class DataProvider<T> {
+/**
+ * @author dom
+ * Class that provdies access thot Persisted object represented @param <T>
+ */
+class DataProvider<T> {
 	
 	
 	//caching instances for performance

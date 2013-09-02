@@ -11,6 +11,10 @@ public class BugService {
 	
 	
 	
+	/**
+	 * @return The list of available priorities
+	 * @throws BugTrackerException
+	 */
 	public static List<Priority> getAllPriority() throws BugTrackerException{
 		try {
 			return DALFactory.getPriorities();
@@ -19,6 +23,10 @@ public class BugService {
 		}
 	}
 	
+	/**
+	 * @return The list of available Status
+	 * @throws BugTrackerException
+	 */
 	public static List<Status> getAllStatus() throws BugTrackerException{
 		try {
 			return DALFactory.getStatuses();
