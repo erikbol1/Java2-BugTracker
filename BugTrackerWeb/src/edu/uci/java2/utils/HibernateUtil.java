@@ -14,6 +14,10 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	private static ServiceRegistry serviceRegistry;
 	
+	/**
+	 * @return Return single for the Session Factory 
+	 * @throws ClassNotFoundException
+	 */
 	public static SessionFactory getSessionFactory() throws ClassNotFoundException {
 		if(sessionFactory==null){
 			Class.forName("com.mysql.jdbc.Driver");
