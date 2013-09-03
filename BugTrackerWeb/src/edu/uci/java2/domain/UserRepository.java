@@ -1,5 +1,7 @@
 package edu.uci.java2.domain;
 
+import java.util.List;
+
 import edu.uci.java2.dal.DalException;
 
 /**
@@ -29,5 +31,11 @@ public interface UserRepository {
 	 * @throws DalException
 	 */
 	public User SaveUser(User user) throws DalException;
+	
+	/**
+	 * @return All useres in the database
+	 * @throws DalException
+	 */
+	public List<User> getAllUsers() throws DalException;
 
 }
