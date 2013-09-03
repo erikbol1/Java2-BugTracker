@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.uci.java2.dal.DALFactory;
 import edu.uci.java2.dal.DalException;
+import edu.uci.java2.domain.exception.BugTrackerException;
 
 public class BugService {
 	

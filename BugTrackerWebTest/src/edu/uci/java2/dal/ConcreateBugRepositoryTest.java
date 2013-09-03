@@ -4,9 +4,9 @@ import java.util.List;
 import edu.uci.java2.domain.Bug;
 import edu.uci.java2.domain.BugRepository;
 import edu.uci.java2.domain.BugService;
-import edu.uci.java2.domain.BugTrackerException;
 import edu.uci.java2.domain.Priority;
 import edu.uci.java2.domain.Status;
+import edu.uci.java2.domain.exception.BugTrackerException;
 
 import org.junit.*;
 import static org.junit.Assert.*;

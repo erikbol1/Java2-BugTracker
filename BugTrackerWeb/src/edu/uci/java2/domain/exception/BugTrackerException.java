@@ -1,4 +1,4 @@
-package edu.uci.java2.domain;
+package edu.uci.java2.domain.exception;
 
 public class BugTrackerException extends Exception {
 
