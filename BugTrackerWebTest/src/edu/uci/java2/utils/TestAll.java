@@ -1,4 +1,4 @@
-package edu.uci.java2;
+package edu.uci.java2.utils;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
@@ -15,9 +15,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	edu.uci.java2.dal.TestAll.class,
-	edu.uci.java2.domain.TestAll.class,
-	edu.uci.java2.utils.TestAll.class,
+	PasswordUtilTest.class,
 })
 public class TestAll {
 
