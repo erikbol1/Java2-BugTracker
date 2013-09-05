@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
 				user = service.validateUser(username, password.toCharArray());
 			} catch (WrongLoginException e) {
 				String message = e.getMessage();
-				session.setAttribute("LoginError", message);
+				request.setAttribute("errorMessage", message);
 			}
 			session.setAttribute("user", user);
 		}
@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
 		if(sessionUser==null){
 			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Login.jsp");
 		}else{
-			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("main");
+			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/listofbugs");
 		}
 		
 		
