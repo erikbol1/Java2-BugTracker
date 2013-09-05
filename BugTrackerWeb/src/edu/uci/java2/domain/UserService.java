@@ -30,12 +30,34 @@ public class UserService {
 			throw new WrongLoginException("Invalid username");
 		}
 		String passwordHash = PasswordUtil.getHash(password);
-		if(!user.getPasswordHash().equals(passwordHash)){
+		if(!user.getPasswordHash().equalsIgnoreCase(passwordHash)){
 			throw new WrongLoginException("Wrong Password");
 		}
 		return user;
 	}
 	
-	
+	public User getUserByUserName(String userName) throws BugTrackerException{
+		User user = null;
+		try{
+			user = userRepository.getUserByUserName(userName);
+		}catch(DalException e){
+			throw new BugTrackerException("User: " + userName + " cannot be retrieved");
+		}
+		return user;
+	}
+
+	public User createNewUser(String username, char[] password, String email) throws BugTrackerException {
+		String passwordhash = PasswordUtil.getHash(password);
+		User user = new User();
+		user.setEmail(email);
+		user.setPasswordHash(passwordhash);
+		user.setUsername(username);
+		try {
+			user = userRepository.SaveUser(user);
+		} catch (DalException e) {
+			throw new BugTrackerException(e);
+		}
+		return user;
+	}
 
 }
