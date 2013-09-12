@@ -7,21 +7,16 @@ import java.util.List;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
-
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-
-
 import edu.uci.java2.utils.HibernateUtil;
 
 /**
  * @author dom
- * Class that provdies access thot Persisted object represented @param <T>
+ * Class that provides access to the persisted object represented @param <T>
  */
 class DataProvider<T> {
 	
@@ -64,12 +59,14 @@ class DataProvider<T> {
 		return object;
 	}
 	
+	@SuppressWarnings("unchecked")
 	T get(int ID) throws NamingException, ClassNotFoundException{
 		if(context ==null){
 			initInitialContext();
 		}
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
+		
 		return (T) session.get(type, ID);
 	}
 	
@@ -77,6 +74,7 @@ class DataProvider<T> {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		
+		@SuppressWarnings("unchecked")
 		List<T> list = session.createCriteria(type).add(Restrictions.eq(attribute, value)).list();
 		if(list.size()==0){
 			throw new DalException("No reuslt to Return");
@@ -89,6 +87,7 @@ class DataProvider<T> {
 	List<T> getAll() throws ClassNotFoundException{
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
 		List<T> list = session.createCriteria(type).list();
 		session.flush();
 		return list;

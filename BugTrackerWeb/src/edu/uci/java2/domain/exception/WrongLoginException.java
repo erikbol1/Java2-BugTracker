@@ -2,6 +2,8 @@ package edu.uci.java2.domain.exception;
 
 public class WrongLoginException extends Exception {
 
+	private static final long serialVersionUID = 4106610438496947723L;
+
 	public WrongLoginException() {
 		super();
 		// TODO Auto-generated constructor stub

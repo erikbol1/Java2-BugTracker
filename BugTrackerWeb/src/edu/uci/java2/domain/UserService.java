@@ -47,10 +47,10 @@ public class UserService {
 	}
 
 	public User createNewUser(String username, char[] password, String email) throws BugTrackerException {
-		String passwordhash = PasswordUtil.getHash(password);
+		String passwordHash = PasswordUtil.getHash(password);
 		User user = new User();
 		user.setEmail(email);
-		user.setPasswordHash(passwordhash);
+		user.setPasswordHash(passwordHash);
 		user.setUsername(username);
 		try {
 			user = userRepository.SaveUser(user);

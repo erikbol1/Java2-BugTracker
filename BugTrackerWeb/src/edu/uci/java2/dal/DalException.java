@@ -2,6 +2,8 @@ package edu.uci.java2.dal;
 
 public class DalException extends Exception {
 
+	private static final long serialVersionUID = -3523182874154247274L;
+
 	public DalException() {
 		// TODO Auto-generated constructor stub
 	}

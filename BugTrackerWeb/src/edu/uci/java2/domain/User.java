@@ -10,8 +10,8 @@ public class User {
 	public int getID() {
 		return ID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 	public String getUsername() {
 		return username;

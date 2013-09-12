@@ -17,6 +17,8 @@ import edu.uci.java2.utils.PasswordUtil;
 
 public class RegisterController extends HttpServlet {
 	
+	private static final long serialVersionUID = 8441533788559152354L;
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		RequestDispatcher dispatcher = null;

@@ -2,6 +2,8 @@ package edu.uci.java2.domain.exception;
 
 public class BugTrackerException extends Exception {
 
+	private static final long serialVersionUID = 4874434590051968922L;
+
 	public BugTrackerException() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -14,16 +14,21 @@ import edu.uci.java2.domain.User;
 
 public class ListOfBugController extends HttpServlet {
 
+	private static final long serialVersionUID = -3923554021598480269L;
+
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		RequestDispatcher dispatcher = null;
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if(user==null){
+		RequestDispatcher dispatcher = null;
+		
+		if(user == null){
 			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/login");
 		}else{
 			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/ListOfBugs.jsp");
 		}
+		
 		dispatcher.forward(request, response);
 	}
 	

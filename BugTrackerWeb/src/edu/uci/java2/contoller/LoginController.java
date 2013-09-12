@@ -17,45 +17,37 @@ import edu.uci.java2.domain.exception.WrongLoginException;
 
 public class LoginController extends HttpServlet {
 	
-	
-	
-	
+	private static final long serialVersionUID = 1222373041963288377L;
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		RequestDispatcher dispatcher = null;
-		HttpSession session = request.getSession();
-		String username = (String) request.getParameter("username");
-		String password = (String) request.getParameter("password");
-		UserService service = new UserService();
+		//Default case
+		RequestDispatcher dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Login.jsp");
 		User user = null;
-		if(username!=null){
+		
+		HttpSession session = request.getSession();
+		String username = request.getParameter("username");
+		
+		if(username != null){
+			
+			String password = request.getParameter("password");
+			UserService userService = new UserService();
+			
 			try {
-				user = service.validateUser(username, password.toCharArray());
+				user = userService.validateUser(username, password.toCharArray());
+				dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/listofbugs");
 			} catch (WrongLoginException e) {
-				String message = e.getMessage();
-				request.setAttribute("errorMessage", message);
+				request.setAttribute("errorMessage", e.getMessage());
 			}
-			session.setAttribute("user", user);
 		}
-		
-		User sessionUser = (User)session.getAttribute("user");
-		if(sessionUser==null){
-			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Login.jsp");
-		}else{
-			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/listofbugs");
-		}
-		
-		
+
+		session.setAttribute("user", user);		
 		dispatcher.forward(request, response);
 	}
 	
-	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-	
-	
-	
 
 }
