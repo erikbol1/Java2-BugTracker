@@ -10,12 +10,12 @@ import javax.naming.NamingException;
 import edu.uci.java2.domain.User;
 import edu.uci.java2.domain.UserRepository;
 
-class ConcreateUserRepository implements UserRepository {
+class ConcreteUserRepository implements UserRepository {
 
 	
 	private DataProvider<User> dataProvider;
 	
-	ConcreateUserRepository(){
+	ConcreteUserRepository(){
 		dataProvider =  new DataProvider<User>(User.class);
 	}
 	

@@ -1,4 +1,4 @@
-package edu.uci.java2.contoller;
+package edu.uci.java2.controller;
 
 import java.io.IOException;
 

@@ -17,14 +17,14 @@ public class DALFactory {
 	 * @return UserRepository to access and save User
 	 */
 	public static UserRepository getNewUserRepository(){
-		return new ConcreateUserRepository();
+		return new ConcreteUserRepository();
 	}
 	
 	/**
 	 * @return Return a BugRepository to access and save Bugs
 	 */
 	public static BugRepository getNewBugRepository(){
-		return new ConcreateBugRepository();
+		return new ConcreteBugRepository();
 	}
 	
 	/**

@@ -6,15 +6,15 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Team A Bug Tracker</title>
 </head>
 <body>
 	<form action="./login" method="post">
 	<table>
 	<tr>
-		<td>User Name:</td><td><input type="text" name="username"></td>
+		<td>Username:</td><td><input type="text" name="username"></td>
 	</tr><tr>
-		<td>PassWord:</td><td><input type="password" name="password"></td>		
+		<td>Password:</td><td><input type="password" name="password"></td>		
 	</tr>
 	</table>
 	<input type="submit" value="Login"/>
@@ -22,6 +22,6 @@
 	</form>
 </body>
 <script type="text/javascript">
-<%@include file="includes/errorAllert.jsp" %>
+<%@include file="includes/errorAlert.jsp" %>
 </script>	
 </html>

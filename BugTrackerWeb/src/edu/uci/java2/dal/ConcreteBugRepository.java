@@ -8,11 +8,11 @@ import javax.naming.NamingException;
 import edu.uci.java2.domain.Bug;
 import edu.uci.java2.domain.BugRepository;
 
-class ConcreateBugRepository implements BugRepository {
+class ConcreteBugRepository implements BugRepository {
 
 	private DataProvider<Bug> dataProvider;
 	
-	ConcreateBugRepository(){
+	ConcreteBugRepository(){
 		this.dataProvider = new DataProvider<Bug>(Bug.class);
 	}
 	
