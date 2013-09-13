@@ -28,14 +28,13 @@ public class ListOfBugController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		RequestDispatcher dispatcher = null;
+		RequestDispatcher dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/ListOfBugs.jsp");
 		
 		if(user == null){//redirect to login page
 			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/login");
 			dispatcher.forward(request, response);
 			return;
 		}
-			dispatcher = getServletConfig().getServletContext().getRequestDispatcher("/ListOfBugs.jsp");
 		
 			request.setAttribute("username", user.getUsername());
 			

@@ -13,7 +13,7 @@
 		Welcome
 		<%
 		out.print((String) request.getAttribute("username"));
-	%>
+		%>
 	</h3>
 	<form action="./listofbugs" method="post">
 		<input type="button"
@@ -42,7 +42,9 @@
 					sb.append(NEW_ELEMENT);
 					sb.append(bug.getCreatedDate().toString());
 					sb.append(NEW_ELEMENT);
-					sb.append("<input type='button' onclick=\"window.location.href='./notimplemented.jsp'\" value='View Details'");
+					sb.append("<input type='button' onclick=\"window.location.href='./details?bugID=");
+					sb.append(bug.getID());
+					sb.append("'\" value='View Details'");
 					sb.append(NEW_ELEMENT);
 					sb.append("<input type='button' onclick=\"window.location.href='./notimplemented.jsp'\" value='Email'");
 					sb.append(END_ROW);

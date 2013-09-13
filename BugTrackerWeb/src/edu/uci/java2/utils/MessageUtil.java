@@ -1,4 +1,4 @@
-package edu.uci.java2.controller;
+package edu.uci.java2.utils;
 
 public class MessageUtil {
 	

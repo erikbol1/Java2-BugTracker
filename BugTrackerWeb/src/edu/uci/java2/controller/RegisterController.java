@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import edu.uci.java2.domain.User;
 import edu.uci.java2.domain.UserService;
 import edu.uci.java2.domain.exception.BugTrackerException;
+import edu.uci.java2.utils.MessageUtil;
 import edu.uci.java2.utils.PasswordUtil;
 
 public class RegisterController extends HttpServlet {
