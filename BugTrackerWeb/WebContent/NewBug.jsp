@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="edu.uci.java2.controller.NewBugController, java.util.List" %>
+    <%@ page import="edu.uci.java2.controller.NewBugController, edu.uci.java2.utils.DropDownUtil, java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +14,7 @@
 	<p>Priority: <select id="Priority" name="priority">
 	<%
 		@SuppressWarnings("unchecked")
-		List<String> priorityList = (List<String>)request.getAttribute(NewBugController.PRIORITY_LIST);
+		List<String> priorityList = (List<String>)request.getAttribute(DropDownUtil.PRIORITY_LIST);
 		for(String priority: priorityList) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("<option value=\"");
@@ -29,7 +29,7 @@
 	<p>Status: <select id="Status" name="status">
 	<%
 	@SuppressWarnings("unchecked")
-		List<String> statusList = (List<String>)request.getAttribute(NewBugController.STATUS_LIST);
+		List<String> statusList = (List<String>)request.getAttribute(DropDownUtil.STATUS_LIST);
 		for(String status: statusList) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("<option value=\"");
@@ -44,7 +44,7 @@
 	<p>Assigned to: <select id="Assigned" name="assigned">
 	<%
 	@SuppressWarnings("unchecked")
-		List<String> usernameList = (List<String>)request.getAttribute(NewBugController.USERNAME_LIST);
+		List<String> usernameList = (List<String>)request.getAttribute(DropDownUtil.USERNAME_LIST);
 		for(String username: usernameList) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("<option value=\"");

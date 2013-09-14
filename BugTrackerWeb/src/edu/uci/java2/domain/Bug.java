@@ -46,6 +46,12 @@ public class Bug {
 	public User getAssignee() {
 		return assignee;
 	}
+	public String getAssigneeUsername(){
+		if (assignee != null)
+			return assignee.getUsername();
+		else
+			return "";
+	}
 	public void setAssignee(User assignee) {
 		this.assignee = assignee;
 	}

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
     <%@include file="includes/header.jsp" %>
-  	<%@ page import="edu.uci.java2.domain.Bug, java.util.List" %>
+  	<%@ page import="edu.uci.java2.domain.Bug, edu.uci.java2.utils.WebDateUtil, java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,7 +40,7 @@
 					sb.append(NEW_ELEMENT);
 					sb.append(bug.getPriority());
 					sb.append(NEW_ELEMENT);
-					sb.append(bug.getCreatedDate().toString());
+					sb.append(WebDateUtil.formatForWebpageDisplay(bug.getCreatedDate()));
 					sb.append(NEW_ELEMENT);
 					sb.append("<input type='button' onclick=\"window.location.href='./details?bugID=");
 					sb.append(bug.getID());
