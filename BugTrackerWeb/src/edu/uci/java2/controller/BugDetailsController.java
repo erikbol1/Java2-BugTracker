@@ -1,9 +1,7 @@
 package edu.uci.java2.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -134,7 +132,7 @@ public class BugDetailsController extends HttpServlet {
 			return;
 		}
 		
-		Priority updatedPriority = getUpdatedPriority();
+		Priority updatedPriority = DropDownUtil.validatePriority(request.getParameter(PRIORITY));
 		if (updatedPriority != null)
 			bug.setPriority(updatedPriority);
 		else {
@@ -142,7 +140,7 @@ public class BugDetailsController extends HttpServlet {
 			return;
 		}
 			
-		Status updatedStatus = getUpdatedStatus();
+		Status updatedStatus = DropDownUtil.validateStatus(request.getParameter(STATUS));
 		if(updatedStatus != null)
 			bug.setStatus(updatedStatus);
 		else {
@@ -151,7 +149,7 @@ public class BugDetailsController extends HttpServlet {
 		}
 
 		//User can be null if no user is assigned
-		bug.setAssignee(getUpdatedUser());
+		bug.setAssignee(DropDownUtil.validateSelectedUser(request.getParameter(ASSIGNED_USER)));
 		
 		String description = request.getParameter(DESCRIPTION);
 		if(description != null)
@@ -169,69 +167,6 @@ public class BugDetailsController extends HttpServlet {
 		}
 		
 		request.setAttribute("errorMessage", intro + " updated successfully.");
-	}
-	
-	private Priority getUpdatedPriority() {
-
-		List<Priority> priorityList = new ArrayList<Priority>();
-		try {
-			 priorityList = DALFactory.getPriorities();
-		} catch (DalException e) {
-			//Ignore
-		}
-		
-		String priorityName = request.getParameter(PRIORITY);		
-		Priority updatedPriority = null;
-		
-		for(Priority priority : priorityList)
-			if(priorityName.equals(priority.getPriority())) {
-				updatedPriority = priority;
-				break;
-			}
-		
-		return updatedPriority;
-	}
-
-	private Status getUpdatedStatus() {
-		
-		List<Status> statusList = new ArrayList<Status>();
-		try {
-			statusList = DALFactory.getStatuses();
-		} catch (DalException e){
-			//Ignore
-		}
-		
-		String statusName = request.getParameter(STATUS);
-		Status updatedStatus = null;
-		
-		for(Status status : statusList)
-			if(statusName.equals(status.getStatus())){
-				updatedStatus = status;
-				break;
-			}
-		
-		return updatedStatus;
-	}
-	
-	private User getUpdatedUser() {
-		
-		List<User> userList = new ArrayList<User>();
-		try {
-			userList = DALFactory.getNewUserRepository().getAllUsers();
-		} catch (DalException e) {
-			//Ignore
-		}
-		
-		String username = request.getParameter(ASSIGNED_USER);
-		User updatedUser = null;
-		
-		for(User user : userList)
-			if(username.equals(user.getUsername())) {
-				updatedUser = user;
-				break;
-			}
-		
-		return updatedUser;
 	}
 	
 	/**

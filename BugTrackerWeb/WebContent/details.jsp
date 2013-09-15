@@ -17,7 +17,7 @@
 <h2>Details for Bug# <% out.print(currentBug.getID()); %></h2>
 <form>
 	<input type="hidden" name="<% out.print(BugDetailsController.HIDDEN_BUG_ID); %>" value="<% out.print(currentBug.getID()); %>" />
-	<p>Summary: <input type="text" name="<% out.print(BugDetailsController.SUMMARY); %>" value="<% out.print(currentBug.getSummary()); %>"></p>
+	<p>Summary: <input type="text" name="<% out.print(BugDetailsController.SUMMARY); %>" value="<% out.print(currentBug.getSummary()); %>" required></p>
 	<p>Date Entered: <% 
 		String createdDate = WebDateUtil.formatForWebpageDisplay(currentBug.getCreatedDate());
 		out.print(createdDate); 
@@ -89,7 +89,7 @@
 	%>	
 	</select></p>
 	<p>Full Description:<br/>
-	<textarea name="<% out.print(BugDetailsController.DESCRIPTION); %>" rows="7" cols="50">
+	<textarea name="<% out.print(BugDetailsController.DESCRIPTION); %>" rows="7" cols="50" required>
 		<% out.print(currentBug.getDescription()); %>
 	</textarea></p>
 	

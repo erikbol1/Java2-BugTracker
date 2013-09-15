@@ -11,6 +11,8 @@ import edu.uci.java2.domain.User;
 
 public class DropDownUtil {
 	
+	private DropDownUtil() {} //Prevent instantiation
+	
 	public static final String USERNAME_LIST = "usernameList";
 	public static final String PRIORITY_LIST = "priorityList";
 	public static final String STATUS_LIST = "statusList";
@@ -33,6 +35,26 @@ public class DropDownUtil {
 		return usernameList;
 	}
 	
+	public static User validateSelectedUser(String username){
+		
+		List<User> userList = new ArrayList<User>();
+		try {
+			userList = DALFactory.getNewUserRepository().getAllUsers();
+		} catch (DalException e) {
+			//Ignore
+		}
+		
+		User updatedUser = null;
+		
+		for(User user : userList)
+			if(username.equals(user.getUsername())) {
+				updatedUser = user;
+				break;
+			}
+		
+		return updatedUser;
+	}
+
 	public static List<String> getPriorityList() {
 		List<Priority> priorities = new ArrayList<Priority>();
 		
@@ -50,6 +72,26 @@ public class DropDownUtil {
 		return priorityList;
 	}
 	
+	public static Priority validatePriority(String priorityName) {
+
+		List<Priority> priorityList = new ArrayList<Priority>();
+		try {
+			 priorityList = DALFactory.getPriorities();
+		} catch (DalException e) {
+			//Ignore
+		}
+		
+		Priority updatedPriority = null;
+		
+		for(Priority priority : priorityList)
+			if(priorityName.equals(priority.getPriority())) {
+				updatedPriority = priority;
+				break;
+			}
+		
+		return updatedPriority;
+	}
+	
 	public static List<String> getStatusList(){
 		List<Status> statuses = new ArrayList<Status>();
 		
@@ -65,5 +107,25 @@ public class DropDownUtil {
 			statusList.add(status.getStatus());
 		
 		return statusList;
+	}
+
+	public static Status validateStatus(String statusName) {
+
+		List<Status> statusList = new ArrayList<Status>();
+		try {
+			statusList = DALFactory.getStatuses();
+		} catch (DalException e){
+			//Ignore
+		}
+		
+		Status updatedStatus = null;
+		
+		for(Status status : statusList)
+			if(statusName.equals(status.getStatus())){
+				updatedStatus = status;
+				break;
+			}
+		
+		return updatedStatus;
 	}
 }

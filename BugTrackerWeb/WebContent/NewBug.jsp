@@ -10,8 +10,8 @@
 <body>
 <h1>New Bug</h1>
 <form>
-	<p>Summary: <input type="text" name="summary"></p>
-	<p>Priority: <select id="Priority" name="priority">
+	<p>Summary: <input type="text" name="<% out.print(NewBugController.SUMMARY); %>" required></p>
+	<p>Priority: <select id="Priority" name="<% out.print(NewBugController.PRIORITY); %>">
 	<%
 		@SuppressWarnings("unchecked")
 		List<String> priorityList = (List<String>)request.getAttribute(DropDownUtil.PRIORITY_LIST);
@@ -26,7 +26,7 @@
 		}
 	%>
 	</select></p>
-	<p>Status: <select id="Status" name="status">
+	<p>Status: <select id="Status" name="<% out.print(NewBugController.STATUS); %>">
 	<%
 	@SuppressWarnings("unchecked")
 		List<String> statusList = (List<String>)request.getAttribute(DropDownUtil.STATUS_LIST);
@@ -41,7 +41,7 @@
 		}
 	%>	
 	</select></p>
-	<p>Assigned to: <select id="Assigned" name="assigned">
+	<p>Assigned to: <select id="Assigned" name="<% out.print(NewBugController.ASSIGNED); %>">
 	<%
 	@SuppressWarnings("unchecked")
 		List<String> usernameList = (List<String>)request.getAttribute(DropDownUtil.USERNAME_LIST);
@@ -57,7 +57,7 @@
 	%>	
 	</select></p>
 	<p>Full Description:<br/>
-	<textarea name="description" rows="7" cols="50"></textarea></p>
+	<textarea name="<% out.print(NewBugController.DESCRIPTION); %>" rows="7" cols="50" required></textarea></p>
 	
 	<input type="submit" value="Submit"/>
 </form>
