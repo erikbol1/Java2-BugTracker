@@ -1,9 +1,9 @@
 package edu.uci.java2.dal;
 
+import java.util.ArrayList;
 import java.util.List;
 import edu.uci.java2.domain.Bug;
 import edu.uci.java2.domain.BugRepository;
-import edu.uci.java2.domain.BugService;
 import edu.uci.java2.domain.Priority;
 import edu.uci.java2.domain.Status;
 import edu.uci.java2.domain.exception.BugTrackerException;
@@ -147,9 +147,15 @@ public class ConcreateBugRepositoryTest {
 		Bug bug = new Bug();
 		bug.setSummary("TOTOTOTO");
 		bug.setDescription("jahdfjkahf;akdhf;ajf");
-		List<Priority> priorities = BugService.getAllPriority();
-		bug.setPriority(priorities.get(0));
-		List<Status> statuses = BugService.getAllStatus();
+		List<Priority> priorities;
+		List<Status> statuses = new ArrayList<Status>();
+		try {
+			priorities = DALFactory.getPriorities();
+			bug.setPriority(priorities.get(0));
+			statuses = DALFactory.getStatuses();
+		} catch (DalException e) {
+			e.printStackTrace();
+		}
 		bug.setStatus(statuses.get(0));
 		return bug;
 	}

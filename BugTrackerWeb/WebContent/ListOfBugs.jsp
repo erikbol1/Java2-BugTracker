@@ -46,7 +46,9 @@
 					sb.append(bug.getID());
 					sb.append("'\" value='View Details'");
 					sb.append(NEW_ELEMENT);
-					sb.append("<input type='button' onclick=\"window.location.href='./notimplemented.jsp'\" value='Email'");
+					sb.append("<input type='button' onclick=\"window.location.href='./emailbug?bugID=");
+					sb.append(bug.getID());
+					sb.append("'\" value='Email'");
 					sb.append(END_ROW);
 					out.print(sb.toString());
 				}

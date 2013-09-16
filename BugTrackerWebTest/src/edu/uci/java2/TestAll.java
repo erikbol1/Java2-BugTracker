@@ -16,7 +16,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	edu.uci.java2.dal.TestAll.class,
-	edu.uci.java2.domain.TestAll.class,
 	edu.uci.java2.utils.TestAll.class,
 })
 public class TestAll {

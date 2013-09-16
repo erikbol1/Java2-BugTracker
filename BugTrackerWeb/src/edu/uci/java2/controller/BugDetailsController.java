@@ -113,8 +113,7 @@ public class BugDetailsController extends HttpServlet {
 		if(!updatedDate.equals(bug.getLastUpdateDate())){
 			request.setAttribute("errorMessage", "Update date does not match.");
 			return false;
-		}
-		
+		}		
 		
 		return true;
 	}

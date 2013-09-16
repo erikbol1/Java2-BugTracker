@@ -16,7 +16,6 @@ public class HibernateListener implements ServletContextListener {
 		try {
 			HibernateUtil.getSessionFactory();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -26,7 +25,6 @@ public class HibernateListener implements ServletContextListener {
 		try {
 			HibernateUtil.getSessionFactory().close();
 		} catch (HibernateException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}  

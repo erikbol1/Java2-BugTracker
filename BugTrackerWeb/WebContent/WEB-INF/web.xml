@@ -826,4 +826,14 @@ standard deployment descriptor.
     <servlet-name>BugDetailsController</servlet-name>
     <url-pattern>/details</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <javaee:description></javaee:description>
+    <javaee:display-name>EmailController</javaee:display-name>
+    <servlet-name>EmailController</servlet-name>
+    <servlet-class>edu.uci.java2.controller.EmailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailController</servlet-name>
+    <url-pattern>/emailbug</url-pattern>
+  </servlet-mapping>
 </web-app>

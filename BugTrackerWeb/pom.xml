@@ -22,8 +22,17 @@
       <id>jboss.org</id>
       <url>https://repository.jboss.org/nexus/content/repositories/</url>
     </repository>
+    <repository>
+  	<id>Java.Net</id>
+  	<url>http://download.java.net/maven/2/</url>
+    </repository>
  </repositories>
 	<dependencies>
+	    <dependency>
+	 <groupId>javax.mail</groupId>
+	 <artifactId>mail</artifactId>
+	 <version>1.4.3</version>
+    </dependency>
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
@@ -50,5 +59,6 @@
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		
 	</dependencies>
 </project>
